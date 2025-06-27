@@ -1215,4 +1215,40 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(fetchUpcomingEvents, 500);
 });
 
+
+    
+    // Clear loading indicator
+    eventsContainer.innerHTML = '';
+    
+    // Create event cards
+    upcomingEventLinks.forEach(event => {
+      const eventCard = document.createElement('div');
+      eventCard.className = 'event-card';
+      
+      eventCard.innerHTML = `
+        <div class="event-title">${event.title}</div>
+        <div class="event-description">Join us for this special event at Chabad of New Mexico.</div>
+        <a href="${event.url}" class="event-link">Learn More →</a>
+      `;
+      
+      eventsContainer.appendChild(eventCard);
+    });
+    
+    // Add "View All Events" link
+    const viewAllLink = document.createElement('a');
+    viewAllLink.href = "/templates/events.htm";
+    viewAllLink.className = "view-all-link";
+    viewAllLink.style.display = "block";
+    viewAllLink.style.marginTop = "15px";
+    viewAllLink.style.color = "#007aff";
+    viewAllLink.style.fontSize = "14px";
+    viewAllLink.style.fontWeight = "500";
+    viewAllLink.textContent = "View All Events →";
+    eventsContainer.appendChild(viewAllLink);
+  }
+  
+  // Run the function after a short delay to ensure the DOM is ready
+  setTimeout(fetchUpcomingEvents, 500);
+});
+
 // ==== END OF SCRIPTS ====
