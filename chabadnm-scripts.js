@@ -662,12 +662,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const row = document.createElement('div');
       row.className = 'image-grid-row';
       
-      rowData.forEach((panel, index) => {
+      rowData.forEach(panel => {
         const item = document.createElement('div');
         item.className = 'image-grid-item';
-        // Add category based on index or title keywords
-        const categories = ['Community', 'Learning', 'Events', 'Youth', 'Services', 'Holiday'];
-        item.setAttribute('data-category', categories[index % categories.length]);
         item.innerHTML = `
           <img src="${panel.image}" alt="${panel.title}" loading="lazy">
           <div class="image-grid-caption">${panel.title}</div>
