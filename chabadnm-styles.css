@@ -639,6 +639,37 @@ td.co_menu_item:hover .co_submenu_container {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+/* Grandchild Menus (sub-submenus) */
+.menu_child {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #fff;
+  border-radius: 12px !important; /* Rounded corners for grandchild menus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  overflow: hidden;
+}
+
+/* Show grandchild menu on hover */
+.co_submenu_container .item:hover .menu_child {
+  display: block;
+}
+
+/* Grandchild menu items */
+.menu_child .child_item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.menu_child .child_item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 /* Remove underline from donate button */
 td.co_menu_item.donate_link > span.parent > div > a.parent::after,
 td.co_menu_item.donate_link > span.parent > div > a.parent:hover::after {
