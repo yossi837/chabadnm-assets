@@ -560,49 +560,8 @@ document.addEventListener('DOMContentLoaded', function() {
     updateDonateButton();
   }
   
-  // Fix frequency toggle to maintain pill shape
-  setTimeout(function() {
-    const frequencyToggle = document.querySelector('.frequency-toggle, #frequency-toggle');
-    if (frequencyToggle) {
-      // Ensure pill shape styles are applied
-      frequencyToggle.style.borderRadius = '50px';
-      frequencyToggle.style.overflow = 'hidden';
-      
-      // Add event listeners to handle the toggle
-      const labels = frequencyToggle.querySelectorAll('.frequency-toggle__label');
-      const radios = frequencyToggle.querySelectorAll('input[type="radio"]');
-      
-      labels.forEach((label, index) => {
-        label.addEventListener('click', function() {
-          // Remove selected class from all labels
-          labels.forEach(l => l.classList.remove('selected'));
-          // Add selected class to clicked label
-          this.classList.add('selected');
-          
-          // Update the toggle class
-          if (index === 0) {
-            frequencyToggle.classList.remove('monthly');
-            frequencyToggle.classList.add('one-time');
-          } else {
-            frequencyToggle.classList.remove('one-time');
-            frequencyToggle.classList.add('monthly');
-          }
-          
-          // Check the corresponding radio
-          if (radios[index]) {
-            radios[index].checked = true;
-          }
-        });
-      });
-      
-      // Set initial state based on existing classes
-      if (frequencyToggle.classList.contains('monthly')) {
-        labels[1]?.classList.add('selected');
-      } else {
-        labels[0]?.classList.add('selected');
-      }
-    }
-  }, 1000);
+  // Frequency toggle - removed custom styling
+  // The toggle will now use default ChabadOne styling
   
   // Add icons to labels
   const donateSection = document.querySelector('#donate');
