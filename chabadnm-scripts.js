@@ -205,18 +205,41 @@ document.addEventListener('DOMContentLoaded', function() {
     subscribeHeader.style.fontSize = '2.5em';
   }
   
-  // Set placeholders for subscribe form inputs
-  setTimeout(function() {
-    const subscribeForm = document.querySelector('.widget-4.subscribe.custom.v280.feed');
-    if (subscribeForm) {
-      const inputs = subscribeForm.querySelectorAll('input[type="text"], input[type="email"]');
-      if (inputs.length >= 3) {
-        inputs[0].placeholder = 'First Name';
-        inputs[1].placeholder = 'Last Name';
-        inputs[2].placeholder = 'Email Address';
-      }
-    }
-  }, 1500); // Wait for form to load
+  // Set placeholders for subscribe form inputs - more aggressive approach
+  function setPlaceholders() {
+    // Try multiple selectors
+    const selectors = [
+      '.widget-4.subscribe input[type="text"]',
+      '.widget-4.subscribe input[type="email"]',
+      '.widget-4.subscribe .co_global_input',
+      'input#Fname',
+      'input#Lname',
+      'input#Email'
+    ];
+    
+    selectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(input => {
+        // Check by ID first
+        if (input.id === 'Fname' || input.name === 'fname') {
+          input.setAttribute('placeholder', 'First Name');
+          input.placeholder = 'First Name';
+        } else if (input.id === 'Lname' || input.name === 'lname') {
+          input.setAttribute('placeholder', 'Last Name');
+          input.placeholder = 'Last Name';
+        } else if (input.id === 'Email' || input.name === 'email' || input.type === 'email') {
+          input.setAttribute('placeholder', 'Email Address');
+          input.placeholder = 'Email Address';
+        }
+      });
+    });
+  }
+  
+  // Try multiple times in case form loads slowly
+  setPlaceholders();
+  setTimeout(setPlaceholders, 500);
+  setTimeout(setPlaceholders, 1000);
+  setTimeout(setPlaceholders, 2000);
 });
 
 // ==== CONTACT PAGE ENHANCEMENTS ====
@@ -562,11 +585,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Fix frequency toggle to maintain pill shape
   setTimeout(function() {
-    const frequencyToggle = document.querySelector('#frequency-toggle');
+    const frequencyToggle = document.querySelector('.frequency-toggle, #frequency-toggle');
     if (frequencyToggle) {
-      // Ensure pill shape styles are applied
-      frequencyToggle.style.borderRadius = '50px';
-      frequencyToggle.style.overflow = 'hidden';
+      // Remove any overflow hidden that might clip the pill
+      frequencyToggle.style.overflow = 'visible';
       
       // Add event listeners to handle the toggle
       const labels = frequencyToggle.querySelectorAll('.frequency-toggle__label');
@@ -582,7 +604,9 @@ document.addEventListener('DOMContentLoaded', function() {
           // Update the toggle class
           if (index === 0) {
             frequencyToggle.classList.remove('monthly');
+            frequencyToggle.classList.add('one-time');
           } else {
+            frequencyToggle.classList.remove('one-time');
             frequencyToggle.classList.add('monthly');
           }
           
@@ -593,16 +617,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
       
-      // Set initial state
+      // Set initial state based on which radio is checked
       const checkedRadio = frequencyToggle.querySelector('input[type="radio"]:checked');
-      if (checkedRadio) {
-        const checkedIndex = Array.from(radios).indexOf(checkedRadio);
-        if (checkedIndex === 1) {
-          frequencyToggle.classList.add('monthly');
-          labels[1].classList.add('selected');
-        } else {
-          labels[0].classList.add('selected');
-        }
+      const checkedIndex = checkedRadio ? Array.from(radios).indexOf(checkedRadio) : -1;
+      
+      if (checkedIndex === 1) {
+        frequencyToggle.classList.add('monthly');
+        labels[1]?.classList.add('selected');
+        labels[0]?.classList.remove('selected');
+      } else {
+        frequencyToggle.classList.add('one-time');
+        labels[0]?.classList.add('selected');
+        labels[1]?.classList.remove('selected');
       }
     }
   }, 1000);
