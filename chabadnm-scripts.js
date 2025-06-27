@@ -205,41 +205,18 @@ document.addEventListener('DOMContentLoaded', function() {
     subscribeHeader.style.fontSize = '2.5em';
   }
   
-  // Set placeholders for subscribe form inputs - more aggressive approach
-  function setPlaceholders() {
-    // Try multiple selectors
-    const selectors = [
-      '.widget-4.subscribe input[type="text"]',
-      '.widget-4.subscribe input[type="email"]',
-      '.widget-4.subscribe .co_global_input',
-      'input#Fname',
-      'input#Lname',
-      'input#Email'
-    ];
-    
-    selectors.forEach(selector => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach(input => {
-        // Check by ID first
-        if (input.id === 'Fname' || input.name === 'fname') {
-          input.setAttribute('placeholder', 'First Name');
-          input.placeholder = 'First Name';
-        } else if (input.id === 'Lname' || input.name === 'lname') {
-          input.setAttribute('placeholder', 'Last Name');
-          input.placeholder = 'Last Name';
-        } else if (input.id === 'Email' || input.name === 'email' || input.type === 'email') {
-          input.setAttribute('placeholder', 'Email Address');
-          input.placeholder = 'Email Address';
-        }
-      });
-    });
-  }
-  
-  // Try multiple times in case form loads slowly
-  setPlaceholders();
-  setTimeout(setPlaceholders, 500);
-  setTimeout(setPlaceholders, 1000);
-  setTimeout(setPlaceholders, 2000);
+  // Set placeholders for subscribe form inputs
+  setTimeout(function() {
+    const subscribeForm = document.querySelector('.widget-4.subscribe.custom.v280.feed');
+    if (subscribeForm) {
+      const inputs = subscribeForm.querySelectorAll('input[type="text"], input[type="email"]');
+      if (inputs.length >= 3) {
+        inputs[0].placeholder = 'First Name';
+        inputs[1].placeholder = 'Last Name';
+        inputs[2].placeholder = 'Email Address';
+      }
+    }
+  }, 1500); // Wait for form to load
 });
 
 // ==== CONTACT PAGE ENHANCEMENTS ====
@@ -587,8 +564,9 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(function() {
     const frequencyToggle = document.querySelector('.frequency-toggle, #frequency-toggle');
     if (frequencyToggle) {
-      // Remove any overflow hidden that might clip the pill
-      frequencyToggle.style.overflow = 'visible';
+      // Ensure pill shape styles are applied
+      frequencyToggle.style.borderRadius = '50px';
+      frequencyToggle.style.overflow = 'hidden';
       
       // Add event listeners to handle the toggle
       const labels = frequencyToggle.querySelectorAll('.frequency-toggle__label');
@@ -617,18 +595,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
       
-      // Set initial state based on which radio is checked
-      const checkedRadio = frequencyToggle.querySelector('input[type="radio"]:checked');
-      const checkedIndex = checkedRadio ? Array.from(radios).indexOf(checkedRadio) : -1;
-      
-      if (checkedIndex === 1) {
-        frequencyToggle.classList.add('monthly');
+      // Set initial state based on existing classes
+      if (frequencyToggle.classList.contains('monthly')) {
         labels[1]?.classList.add('selected');
-        labels[0]?.classList.remove('selected');
       } else {
-        frequencyToggle.classList.add('one-time');
         labels[0]?.classList.add('selected');
-        labels[1]?.classList.remove('selected');
       }
     }
   }, 1000);
@@ -1180,42 +1151,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Limit to 3 events
     upcomingEventLinks = upcomingEventLinks.slice(0, 3);
-    
-    // Clear loading indicator
-    eventsContainer.innerHTML = '';
-    
-    // Create event cards
-    upcomingEventLinks.forEach(event => {
-      const eventCard = document.createElement('div');
-      eventCard.className = 'event-card';
-      
-      eventCard.innerHTML = `
-        <div class="event-title">${event.title}</div>
-        <div class="event-description">Join us for this special event at Chabad of New Mexico.</div>
-        <a href="${event.url}" class="event-link">Learn More →</a>
-      `;
-      
-      eventsContainer.appendChild(eventCard);
-    });
-    
-    // Add "View All Events" link
-    const viewAllLink = document.createElement('a');
-    viewAllLink.href = "/templates/events.htm";
-    viewAllLink.className = "view-all-link";
-    viewAllLink.style.display = "block";
-    viewAllLink.style.marginTop = "15px";
-    viewAllLink.style.color = "#007aff";
-    viewAllLink.style.fontSize = "14px";
-    viewAllLink.style.fontWeight = "500";
-    viewAllLink.textContent = "View All Events →";
-    eventsContainer.appendChild(viewAllLink);
-  }
-  
-  // Run the function after a short delay to ensure the DOM is ready
-  setTimeout(fetchUpcomingEvents, 500);
-});
-
-
     
     // Clear loading indicator
     eventsContainer.innerHTML = '';
