@@ -204,6 +204,19 @@ document.addEventListener('DOMContentLoaded', function() {
     subscribeHeader.textContent = "Let's keep in touch";
     subscribeHeader.style.fontSize = '2.5em';
   }
+  
+  // Set placeholders for subscribe form inputs
+  setTimeout(function() {
+    const subscribeForm = document.querySelector('.widget-4.subscribe.custom.v280.feed');
+    if (subscribeForm) {
+      const inputs = subscribeForm.querySelectorAll('input[type="text"], input[type="email"]');
+      if (inputs.length >= 3) {
+        inputs[0].placeholder = 'First Name';
+        inputs[1].placeholder = 'Last Name';
+        inputs[2].placeholder = 'Email Address';
+      }
+    }
+  }, 1500); // Wait for form to load
 });
 
 // ==== CONTACT PAGE ENHANCEMENTS ====
@@ -546,6 +559,53 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateDonateButton();
   }
+  
+  // Fix frequency toggle to maintain pill shape
+  setTimeout(function() {
+    const frequencyToggle = document.querySelector('#frequency-toggle');
+    if (frequencyToggle) {
+      // Ensure pill shape styles are applied
+      frequencyToggle.style.borderRadius = '50px';
+      frequencyToggle.style.overflow = 'hidden';
+      
+      // Add event listeners to handle the toggle
+      const labels = frequencyToggle.querySelectorAll('.frequency-toggle__label');
+      const radios = frequencyToggle.querySelectorAll('input[type="radio"]');
+      
+      labels.forEach((label, index) => {
+        label.addEventListener('click', function() {
+          // Remove selected class from all labels
+          labels.forEach(l => l.classList.remove('selected'));
+          // Add selected class to clicked label
+          this.classList.add('selected');
+          
+          // Update the toggle class
+          if (index === 0) {
+            frequencyToggle.classList.remove('monthly');
+          } else {
+            frequencyToggle.classList.add('monthly');
+          }
+          
+          // Check the corresponding radio
+          if (radios[index]) {
+            radios[index].checked = true;
+          }
+        });
+      });
+      
+      // Set initial state
+      const checkedRadio = frequencyToggle.querySelector('input[type="radio"]:checked');
+      if (checkedRadio) {
+        const checkedIndex = Array.from(radios).indexOf(checkedRadio);
+        if (checkedIndex === 1) {
+          frequencyToggle.classList.add('monthly');
+          labels[1].classList.add('selected');
+        } else {
+          labels[0].classList.add('selected');
+        }
+      }
+    }
+  }, 1000);
   
   // Add icons to labels
   const donateSection = document.querySelector('#donate');
