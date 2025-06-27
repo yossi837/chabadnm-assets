@@ -1297,6 +1297,42 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.insertAdjacentHTML('beforeend', floatingContactHTML);
   
   console.log('All HTML elements injected successfully from GitHub-hosted script!');
+  
+  // Initialize Quick Access FAB after HTML injection
+  const mainFab = document.getElementById('mainFab');
+  const fabMenu = document.getElementById('fabMenu');
+  
+  if (mainFab && fabMenu) {
+    let isOpen = false;
+    
+    mainFab.addEventListener('click', function(e) {
+      e.stopPropagation();
+      isOpen = !isOpen;
+      mainFab.classList.toggle('active');
+      fabMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (isOpen && !event.target.closest('.quick-access-fab')) {
+        isOpen = false;
+        mainFab.classList.remove('active');
+        fabMenu.classList.remove('active');
+      }
+    });
+    
+    // Add touch feedback
+    const buttons = document.querySelectorAll('.fab-item-button');
+    buttons.forEach(button => {
+      button.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.95)';
+      });
+      
+      button.addEventListener('touchend', function() {
+        this.style.transform = '';
+      });
+    });
+  }
 });
 
 // ==== END OF SCRIPTS ====
