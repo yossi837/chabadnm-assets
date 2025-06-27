@@ -1186,4 +1186,158 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(fetchUpcomingEvents, 500);
 });
 
+// ==== INJECTED HTML ELEMENTS FROM CHABONE FOOTER BOX ====
+document.addEventListener('DOMContentLoaded', function() {
+  // Inject Quick Access FAB HTML
+  const quickAccessFabHTML = `
+    <div class="quick-access-fab">
+      <button class="fab-button" id="mainFab" aria-label="Quick Menu">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+        </svg>
+      </button>
+      <div class="fab-menu" id="fabMenu">
+        <div class="fab-item">
+          <span class="fab-item-label">Home</span>
+          <button class="fab-item-button home" onclick="window.location.href='/'">
+            <svg viewBox="0 0 24 24">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="fab-item">
+          <span class="fab-item-label">Donate</span>
+          <button class="fab-item-button" onclick="window.location.href='/4970020'">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="fab-item">
+          <span class="fab-item-label">Contact Us</span>
+          <button class="fab-item-button" onclick="window.location.href='/tools/feedback.asp'">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="fab-item">
+          <span class="fab-item-label">Subscribe</span>
+          <button class="fab-item-button" onclick="window.location.href='/tools/subscribe/default.htm'">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="fab-item">
+          <span class="fab-item-label">Calendar</span>
+          <button class="fab-item-button" onclick="window.location.href='/templates/events.htm'">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm-7-5h5v5h-5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="fab-item">
+          <span class="fab-item-label">Learning</span>
+          <button class="fab-item-button" onclick="window.location.href='/library/article_cdo/aid/577994/jewish/Online-Jewish-Resources.htm'">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Inject Modern Footer HTML
+  const modernFooterHTML = `
+    <footer id="modern-footer">
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-column contact-info">
+            <div class="footer-logo">
+              <img src="https://www.chabadnm.org/media/images/1307/itmy13073382.png" alt="Chabad Logo">
+            </div>
+            <h3>Chabad of New Mexico</h3>
+            <p class="address">
+              <i class="fa fa-map-marker"></i>
+              4000 San Pedro Northeast<br>
+              Albuquerque, NM 87110
+            </p>
+            <p class="phone">
+              <i class="fa fa-phone"></i>
+              <a href="tel:5058801181">505-880-1181</a>
+            </p>
+            <p class="email">
+              <i class="fa fa-envelope"></i>
+              <a href="/tools/feedback.asp">Contact Us</a>
+            </p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/chabadofnewmexico" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://wa.me/5058801181" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+              <a href="https://www.instagram.com/chabadofnewmexico" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-column quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/templates/articlecco_cdo/aid/6164502/jewish/About-Us.htm">About Us</a></li>
+              <li><a href="/templates/articlecco_cdo/aid/422780/jewish/Mikvah.htm">Mikvah</a></li>
+              <li><a href="/library/article_cdo/aid/577994/jewish/Online-Jewish-Resources.htm">Learning Resources</a></li>
+              <li><a href="/tools/feedback.asp">Contact Us</a></li>
+              <li><a href="/4970020">Donate</a></li>
+              <li><a href="/tools/subscribe/default.htm">Subscribe</a></li>
+              <li><a href="/templates/events.htm">Calendar</a></li>
+              <li><a href="/4026210">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column upcoming-events">
+            <h3>Upcoming Events</h3>
+            <div id="footer-events-container">
+              <div class="loading-indicator">
+                <div class="spinner"></div>
+                <span>Loading events...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© <span id="current-year"></span> Chabad of New Mexico. All rights reserved.</p>
+          <p class="powered-by">Powered by <span class="yossi-text">Yossi</span></p>
+        </div>
+      </div>
+    </footer>
+  `;
+
+  // Inject Back to Top Button HTML
+  const backToTopHTML = `
+    <img id="back-to-top" src="https://static.thenounproject.com/png/1590829-512.png" alt="Back to Top">
+  `;
+
+  // Inject Floating Contact Button HTML
+  const floatingContactHTML = `
+    <div class="floating-contact-button">
+      <button class="contact-button">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/>
+          </svg>
+        </div>
+        <span class="contact-text">Contact Us</span>
+      </button>
+    </div>
+  `;
+
+  // Insert all HTML elements into the DOM
+  document.body.insertAdjacentHTML('beforeend', quickAccessFabHTML);
+  document.body.insertAdjacentHTML('beforeend', modernFooterHTML);
+  document.body.insertAdjacentHTML('beforeend', backToTopHTML);
+  document.body.insertAdjacentHTML('beforeend', floatingContactHTML);
+  
+  console.log('All HTML elements injected successfully from GitHub-hosted script!');
+});
+
 // ==== END OF SCRIPTS ====
