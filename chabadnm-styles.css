@@ -608,6 +608,37 @@ td.co_menu_item > span.parent > div > a.parent:hover {
   font-size: 1.05em;
 }
 
+/* Dropdown Menu Styling with Rounded Corners */
+.co_submenu_container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border-radius: 12px !important; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 100;
+  display: none;
+}
+
+/* Show Dropdown on Hover */
+.navbar .parent:hover .co_submenu_container,
+td.co_menu_item:hover .co_submenu_container {
+  display: block;
+}
+
+/* Dropdown Items */
+.co_submenu_container .co_column .item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect for Dropdown Items */
+.co_submenu_container .co_column .item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 /* Remove underline from donate button */
 td.co_menu_item.donate_link > span.parent > div > a.parent::after,
 td.co_menu_item.donate_link > span.parent > div > a.parent:hover::after {
