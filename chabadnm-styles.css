@@ -2773,16 +2773,29 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   display: inline-block !important;
   position: relative !important;
   text-transform: none !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Cool gradient effect on hover */
+#header_branding .site_title:hover {
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
 }
 
 /* Style the "of" separately */
 #header_branding .site_title .of-text {
-  font-size: 0.7em !important;
+  font-size: 0.6em !important;
   font-weight: 400 !important;
-  opacity: 0.8 !important;
+  opacity: 0.7 !important;
   font-style: italic !important;
-  margin: 0 3px !important;
-  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 4px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  position: relative !important;
+  top: -2px !important;
+  letter-spacing: 1px !important;
 }
 
 /* When header scrolls and turns white/yellow */
@@ -2794,6 +2807,47 @@ body:not(.homepage) #header_branding .site_title,
 .white-header #header_branding .site_title {
   color: #b91c1c !important; /* Darker red to match logo */
   font-size: 26px !important;
+  text-shadow: none !important;
+  position: relative !important;
+}
+
+/* Cool animated underline when scrolled */
+.scrolled #header_branding .site_title::after,
+.yellow-header #header_branding .site_title::after,
+#header.scrolled #header_branding .site_title::after,
+body:not(.homepage) #header_branding .site_title::after,
+.header_container.scrolled #header_branding .site_title::after,
+.white-header #header_branding .site_title::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #b91c1c 0%, #dc2626 50%, #b91c1c 100%);
+  transition: width 0.3s ease;
+}
+
+.scrolled #header_branding .site_title:hover::after,
+.yellow-header #header_branding .site_title:hover::after,
+#header.scrolled #header_branding .site_title:hover::after,
+body:not(.homepage) #header_branding .site_title:hover::after,
+.header_container.scrolled #header_branding .site_title:hover::after,
+.white-header #header_branding .site_title:hover::after {
+  width: 100%;
+}
+
+/* Cool gradient on hover when scrolled */
+.scrolled #header_branding .site_title:hover,
+.yellow-header #header_branding .site_title:hover,
+#header.scrolled #header_branding .site_title:hover,
+body:not(.homepage) #header_branding .site_title:hover,
+.header_container.scrolled #header_branding .site_title:hover,
+.white-header #header_branding .site_title:hover {
+  background: linear-gradient(45deg, #b91c1c, #dc2626);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* "of" text when scrolled */
@@ -2803,12 +2857,23 @@ body:not(.homepage) #header_branding .site_title,
 body:not(.homepage) #header_branding .site_title .of-text,
 .header_container.scrolled #header_branding .site_title .of-text,
 .white-header #header_branding .site_title .of-text {
-  color: rgba(185, 28, 28, 0.65) !important;
+  color: rgba(185, 28, 28, 0.6) !important;
 }
 
-#header_branding .site_title:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+/* Add subtle animation on page load */
+@keyframes slideInText {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#header_branding .site_title {
+  animation: slideInText 0.8s ease-out;
 }
 
 /* Style the subtitle */
@@ -2860,8 +2925,8 @@ body:not(.homepage) #header_branding .site_title .of-text,
 body:not(.homepage) #header_branding .site-logo-wrapper,
 .header_container.scrolled #header_branding .site-logo-wrapper,
 .white-header #header_branding .site-logo-wrapper {
-  width: 80px !important;
-  height: 80px !important;
+  width: 90px !important;
+  height: 90px !important;
   box-shadow: none !important;
   background: transparent !important;
 }
