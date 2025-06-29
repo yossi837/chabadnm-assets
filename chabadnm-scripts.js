@@ -85,6 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
       <source src="${videoData[2].src}#t=${videoData[2].start}" type="video/mp4">
     </video>
     <div class="hero-content">
+      <div class="flame-container">
+        <div class="flame">
+          <div class="flame-main"></div>
+          <div class="flame-particle particle-1"></div>
+          <div class="flame-particle particle-2"></div>
+          <div class="flame-particle particle-3"></div>
+        </div>
+      </div>
       <h1>Chabad of New Mexico</h1>
       <p>Your Jewish Home in the Southwest</p>
     </div>
