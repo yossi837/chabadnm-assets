@@ -340,34 +340,27 @@ function initializeFloatingContactButton() {
   // Smart scroll detection
   function handleScroll() {
     const currentScroll = window.pageYOffset;
-    const headerHeight = document.querySelector('header')?.offsetHeight || 400;
+    const heroHeight = window.innerHeight; // Height of hero section (100vh)
     
     // Determine scroll direction
     isScrollingUp = currentScroll < lastScrollPosition;
     
-    // Show conditions
-    const shouldShow = currentScroll > headerHeight && 
-                      (isScrollingUp || currentScroll > headerHeight * 2);
-    
-    // Update button visibility
-    if (shouldShow) {
-      clearTimeout(hideTimeout);
-      buttonContainer.classList.remove('hiding');
-      buttonContainer.classList.add('visible');
-    } else {
-      buttonContainer.classList.add('hiding');
-      hideTimeout = setTimeout(() => {
-        buttonContainer.classList.remove('visible');
-      }, 400);
+    // Only show after hero section
+    if (currentScroll <= heroHeight) {
+      buttonContainer.classList.remove('visible');
+      lastScrollPosition = currentScroll;
+      return;
     }
     
-    // Collapse on mobile scroll
-    if (window.innerWidth <= 768 && Math.abs(currentScroll - lastScrollTop) > 50) {
+    // Show when scrolling up, hide when scrolling down
+    if (isScrollingUp && Math.abs(currentScroll - lastScrollPosition) > 5) {
+      buttonContainer.classList.add('visible');
+    } else if (!isScrollingUp && Math.abs(currentScroll - lastScrollPosition) > 5) {
+      buttonContainer.classList.remove('visible');
       if (isExpanded) toggleExpand();
     }
     
     lastScrollPosition = currentScroll;
-    lastScrollTop = currentScroll;
     userHasScrolled = true;
   }
   
@@ -443,27 +436,7 @@ function initializeFloatingContactButton() {
     }, 250);
   });
   
-  // Auto-hide after 5 seconds of inactivity
-  function startInactivityTimer() {
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(() => {
-      if (!isExpanded) {
-        buttonContainer.classList.add('hiding');
-        setTimeout(() => {
-          buttonContainer.classList.remove('visible');
-        }, 400);
-      }
-    }, 5000);
-  }
-  
-  // Reset inactivity timer on user interaction
-  ['mousemove', 'click', 'touchstart', 'scroll'].forEach(event => {
-    document.addEventListener(event, () => {
-      if (userHasScrolled) {
-        startInactivityTimer();
-      }
-    });
-  });
+  // Remove auto-hide functionality - button visibility only controlled by scroll
 }
 
 // Initialize on DOMContentLoaded (for non-injected elements)
@@ -517,23 +490,16 @@ function initializeBackToTopButton() {
   if (!backToTopButton) return;
   
   window.addEventListener('scroll', function() {
-    const triggerPoint = document.body.scrollHeight * 0.3;
-    const footerTop = footer ? footer.offsetTop : document.body.scrollHeight;
-    const scrollPosition = window.scrollY + window.innerHeight;
+    const heroHeight = window.innerHeight; // Height of hero section (100vh)
     
-    // Show button when past 30% of page
-    if (window.scrollY > triggerPoint) {
+    // Show button right after hero section
+    if (window.scrollY > heroHeight) {
       backToTopButton.classList.add('show');
     } else {
       backToTopButton.classList.remove('show');
     }
     
-    // Change color when overlapping footer
-    if (scrollPosition >= footerTop) {
-      backToTopButton.classList.add('white');
-    } else {
-      backToTopButton.classList.remove('white');
-    }
+    // No color change needed - keep it consistent
   });
   
   // Scroll to top behavior

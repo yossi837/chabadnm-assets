@@ -990,9 +990,7 @@ form[id="5148325"] button#input_2.form-submit-button:hover {
   visibility: visible;
 }
 
-#back-to-top.white {
-  filter: invert(1);
-}
+/* Color change removed - button stays consistent */
 
 #back-to-top:hover {
   transform: scale(1.1);
