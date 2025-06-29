@@ -470,86 +470,10 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const mainFab = document.getElementById('mainFab');
   const fabMenu = document.getElementById('fabMenu');
-  const fab = document.querySelector('.quick-access-fab');
   
-  if (!mainFab || !fabMenu || !fab) return;
+  if (!mainFab || !fabMenu) return;
   
   let isOpen = false;
-  
-  // FAB scroll hide/show functionality
-  let lastScrollTop = 0;
-  let scrollTimeout;
-  let ticking = false;
-  
-  function handleFABScroll() {
-    clearTimeout(scrollTimeout);
-    
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollDiff = scrollTop - lastScrollTop;
-    
-    // Only act on significant scroll
-    if (Math.abs(scrollDiff) > 5) {
-      if (scrollDiff > 0 && scrollTop > 100) {
-        // Scrolling down and past 100px
-        fab.classList.add('hidden');
-        // Also close menu if open
-        if (isOpen) {
-          isOpen = false;
-          mainFab.classList.remove('active');
-          fabMenu.classList.remove('active');
-        }
-      } else if (scrollDiff < 0) {
-        // Scrolling up
-        fab.classList.remove('hidden');
-      }
-    }
-    
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    
-    // Always show FAB when scroll stops after a delay
-    scrollTimeout = setTimeout(function() {
-      fab.classList.remove('hidden');
-    }, 1500);
-  }
-  
-  // Throttle scroll event for performance
-  function requestTick() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        handleFABScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-  
-  // Add scroll listener
-  window.addEventListener('scroll', requestTick, { passive: true });
-  
-  // Also hide/show based on touch events for mobile
-  let touchStartY = 0;
-  
-  window.addEventListener('touchstart', function(e) {
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-  
-  window.addEventListener('touchmove', function(e) {
-    if (!fab) return;
-    
-    const touchY = e.touches[0].clientY;
-    const diff = touchStartY - touchY;
-    
-    if (Math.abs(diff) > 10) {
-      if (diff > 0) {
-        // Swiping up (scrolling down)
-        fab.classList.add('hidden');
-      } else {
-        // Swiping down (scrolling up)
-        fab.classList.remove('hidden');
-      }
-      touchStartY = touchY;
-    }
-  }, { passive: true });
   
   mainFab.addEventListener('click', function(e) {
     e.stopPropagation();
