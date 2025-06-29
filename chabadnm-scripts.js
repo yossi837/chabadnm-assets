@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add page URL to body
   document.body.setAttribute('data-page-url', window.location.href);
   
-  // Style header branding - make "New Mexico" on second line and style "of"
+  // Style header branding - style "of" text
   const siteTitle = document.querySelector('#header_branding .site_title');
   if (siteTitle && siteTitle.textContent.includes('Chabad of New Mexico')) {
-    siteTitle.innerHTML = siteTitle.innerHTML.replace('Chabad of New Mexico', 'Chabad <span class="of-text">of</span><br>New Mexico');
+    siteTitle.innerHTML = siteTitle.innerHTML.replace('Chabad of New Mexico', 'Chabad <span class="of-text">of</span> New Mexico');
   }
   
   // Add scroll detection for header

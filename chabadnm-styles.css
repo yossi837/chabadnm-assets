@@ -2763,17 +2763,19 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 /* ==== HEADER BRANDING ==== */
 #header_branding .site_title {
   color: white !important;
-  font-size: 34px !important;
+  font-size: 30px !important;
   font-weight: 700 !important;
   text-decoration: none !important;
   font-family: 'Nunito', sans-serif !important;
-  letter-spacing: -0.3px !important;
-  line-height: 1.15 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.2 !important;
   transition: all 0.3s ease !important;
-  display: inline-block !important;
+  display: flex !important;
+  align-items: baseline !important;
   position: relative !important;
   text-transform: none !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap !important;
 }
 
 /* Cool gradient effect on hover */
@@ -2787,15 +2789,16 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 
 /* Style the "of" separately */
 #header_branding .site_title .of-text {
-  font-size: 0.6em !important;
-  font-weight: 400 !important;
-  opacity: 0.7 !important;
+  font-size: 0.65em !important;
+  font-weight: 300 !important;
+  opacity: 0.6 !important;
   font-style: italic !important;
-  margin: 0 4px !important;
-  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 0 6px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
   position: relative !important;
-  top: -2px !important;
   letter-spacing: 1px !important;
+  display: inline-block !important;
+  transform: translateY(-2px) !important;
 }
 
 /* When header scrolls and turns white/yellow */
@@ -2806,7 +2809,7 @@ body:not(.homepage) #header_branding .site_title,
 .header_container.scrolled #header_branding .site_title,
 .white-header #header_branding .site_title {
   color: #b91c1c !important; /* Darker red to match logo */
-  font-size: 26px !important;
+  font-size: 22px !important;
   text-shadow: none !important;
   position: relative !important;
 }
@@ -2939,11 +2942,55 @@ body:not(.homepage) #header_branding .site-logo-wrapper,
 #header_branding {
   display: flex !important;
   align-items: center !important;
-  gap: 16px !important;
+  gap: 20px !important;
+  height: 100% !important;
 }
 
 #header_branding .site-logo-wrapper {
   flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Cool effect - make "New Mexico" slightly different */
+@keyframes shimmer {
+  from {
+    background-position: -100% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+/* Add subtle shimmer on hover */
+#header_branding .site_title:hover {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.8) 0%, 
+    rgba(255,255,255,1) 50%, 
+    rgba(255,255,255,0.8) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 2s ease infinite;
+  text-shadow: none;
+}
+
+.scrolled #header_branding .site_title:hover,
+.yellow-header #header_branding .site_title:hover,
+#header.scrolled #header_branding .site_title:hover,
+body:not(.homepage) #header_branding .site_title:hover,
+.header_container.scrolled #header_branding .site_title:hover,
+.white-header #header_branding .site_title:hover {
+  background: linear-gradient(90deg, 
+    rgba(185,28,28,0.8) 0%, 
+    rgba(185,28,28,1) 50%, 
+    rgba(185,28,28,0.8) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 2s ease infinite;
 }
 
 /* 3. Frequency toggle - removed custom styling */
