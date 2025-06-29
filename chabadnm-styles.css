@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -2762,12 +2763,12 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 /* ==== HEADER BRANDING ==== */
 #header_branding .site_title {
   color: white !important;
-  font-size: 36px !important;
-  font-weight: 600 !important;
+  font-size: 34px !important;
+  font-weight: 700 !important;
   text-decoration: none !important;
-  font-family: 'Poppins', sans-serif !important;
-  letter-spacing: -0.5px !important;
-  line-height: 1.2 !important;
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.15 !important;
   transition: all 0.3s ease !important;
   display: inline-block !important;
   position: relative !important;
@@ -2791,8 +2792,8 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 body:not(.homepage) #header_branding .site_title,
 .header_container.scrolled #header_branding .site_title,
 .white-header #header_branding .site_title {
-  color: #dc2626 !important;
-  font-size: 28px !important;
+  color: #b91c1c !important; /* Darker red to match logo */
+  font-size: 26px !important;
 }
 
 /* "of" text when scrolled */
@@ -2802,7 +2803,7 @@ body:not(.homepage) #header_branding .site_title,
 body:not(.homepage) #header_branding .site_title .of-text,
 .header_container.scrolled #header_branding .site_title .of-text,
 .white-header #header_branding .site_title .of-text {
-  color: rgba(220, 38, 38, 0.7) !important;
+  color: rgba(185, 28, 28, 0.65) !important;
 }
 
 #header_branding .site_title:hover {
@@ -2829,22 +2830,38 @@ body:not(.homepage) #header_branding .site_title .of-text,
   color: #6b7280 !important;
 }
 
-/* Logo size and animation */
+/* Logo wrapper for proper sizing */
+#header_branding .site-logo-wrapper {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: white !important;
+}
+
+/* Logo image */
 #header_branding .site-logo-wrapper img {
-  width: 120px !important;
-  height: 120px !important;
+  width: 90% !important;
+  height: 90% !important;
+  object-fit: contain !important;
   transition: all 0.3s ease !important;
 }
 
-/* Logo smaller when scrolled */
-.scrolled #header_branding .site-logo-wrapper img,
-.yellow-header #header_branding .site-logo-wrapper img,
-#header.scrolled #header_branding .site-logo-wrapper img,
-body:not(.homepage) #header_branding .site-logo-wrapper img,
-.header_container.scrolled #header_branding .site-logo-wrapper img,
-.white-header #header_branding .site-logo-wrapper img {
-  width: 100px !important;
-  height: 100px !important;
+/* Logo wrapper smaller when scrolled */
+.scrolled #header_branding .site-logo-wrapper,
+.yellow-header #header_branding .site-logo-wrapper,
+#header.scrolled #header_branding .site-logo-wrapper,
+body:not(.homepage) #header_branding .site-logo-wrapper,
+.header_container.scrolled #header_branding .site-logo-wrapper,
+.white-header #header_branding .site-logo-wrapper {
+  width: 70px !important;
+  height: 70px !important;
 }
 
 #header_branding:hover .site-logo-wrapper img {
