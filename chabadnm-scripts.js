@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ==== FLOATING CONTACT BUTTON ====
-document.addEventListener('DOMContentLoaded', function() {
+function initializeFloatingContactButton() {
   const buttonContainer = document.querySelector('.floating-contact-button');
   const button = document.querySelector('.contact-button');
   
@@ -464,6 +464,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+}
+
+// Initialize on DOMContentLoaded (for non-injected elements)
+document.addEventListener('DOMContentLoaded', function() {
+  initializeFloatingContactButton();
 });
 
 // ==== QUICK ACCESS FAB (MOBILE) ====
@@ -505,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ==== BACK TO TOP BUTTON ====
-document.addEventListener('DOMContentLoaded', function() {
+function initializeBackToTopButton() {
   const backToTopButton = document.getElementById('back-to-top');
   const footer = document.getElementById('modern-footer');
   
@@ -535,6 +540,11 @@ document.addEventListener('DOMContentLoaded', function() {
   backToTopButton.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+// Initialize on DOMContentLoaded (for non-injected elements)
+document.addEventListener('DOMContentLoaded', function() {
+  initializeBackToTopButton();
 });
 
 // ==== DONATION FORM ENHANCEMENTS ====
@@ -1309,6 +1319,12 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.insertAdjacentHTML('beforeend', floatingContactHTML);
   
   console.log('All HTML elements injected successfully from GitHub-hosted script!');
+  
+  // Re-initialize floating contact button after injection
+  initializeFloatingContactButton();
+  
+  // Re-initialize back to top button after injection  
+  initializeBackToTopButton();
   
   // Initialize Quick Access FAB after HTML injection
   const mainFab = document.getElementById('mainFab');
