@@ -2762,23 +2762,47 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 /* ==== HEADER BRANDING ==== */
 #header_branding .site_title {
   color: white !important;
-  font-size: 28px !important;
+  font-size: 36px !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   font-family: 'Poppins', sans-serif !important;
-  letter-spacing: -0.3px !important;
-  line-height: 1.3 !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.2 !important;
   transition: all 0.3s ease !important;
   display: inline-block !important;
   position: relative !important;
   text-transform: none !important;
 }
 
-/* When header scrolls and gets yellow background */
+/* Style the "of" separately */
+#header_branding .site_title .of-text {
+  font-size: 0.7em !important;
+  font-weight: 400 !important;
+  opacity: 0.8 !important;
+  font-style: italic !important;
+  margin: 0 3px !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* When header scrolls and turns white/yellow */
 .scrolled #header_branding .site_title,
 .yellow-header #header_branding .site_title,
-#header.scrolled #header_branding .site_title {
+#header.scrolled #header_branding .site_title,
+body:not(.homepage) #header_branding .site_title,
+.header_container.scrolled #header_branding .site_title,
+.white-header #header_branding .site_title {
   color: #dc2626 !important;
+  font-size: 28px !important;
+}
+
+/* "of" text when scrolled */
+.scrolled #header_branding .site_title .of-text,
+.yellow-header #header_branding .site_title .of-text,
+#header.scrolled #header_branding .site_title .of-text,
+body:not(.homepage) #header_branding .site_title .of-text,
+.header_container.scrolled #header_branding .site_title .of-text,
+.white-header #header_branding .site_title .of-text {
+  color: rgba(220, 38, 38, 0.7) !important;
 }
 
 #header_branding .site_title:hover {
@@ -2805,9 +2829,22 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   color: #6b7280 !important;
 }
 
-/* Logo animation on hover - subtle */
+/* Logo size and animation */
 #header_branding .site-logo-wrapper img {
-  transition: transform 0.3s ease !important;
+  width: 120px !important;
+  height: 120px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Logo smaller when scrolled */
+.scrolled #header_branding .site-logo-wrapper img,
+.yellow-header #header_branding .site-logo-wrapper img,
+#header.scrolled #header_branding .site-logo-wrapper img,
+body:not(.homepage) #header_branding .site-logo-wrapper img,
+.header_container.scrolled #header_branding .site-logo-wrapper img,
+.white-header #header_branding .site-logo-wrapper img {
+  width: 100px !important;
+  height: 100px !important;
 }
 
 #header_branding:hover .site-logo-wrapper img {

@@ -12,10 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add page URL to body
   document.body.setAttribute('data-page-url', window.location.href);
   
-  // Style header branding - make "New Mexico" on second line
+  // Style header branding - make "New Mexico" on second line and style "of"
   const siteTitle = document.querySelector('#header_branding .site_title');
   if (siteTitle && siteTitle.textContent.includes('Chabad of New Mexico')) {
-    siteTitle.innerHTML = siteTitle.innerHTML.replace('Chabad of New Mexico', 'Chabad of<br>New Mexico');
+    siteTitle.innerHTML = siteTitle.innerHTML.replace('Chabad of New Mexico', 'Chabad <span class="of-text">of</span><br>New Mexico');
+  }
+  
+  // Add scroll detection for header
+  const header = document.querySelector('#header, .header_container, .header-wrapper');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+        document.body.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('scrolled');
+        document.body.classList.remove('header-scrolled');
+      }
+    });
   }
 });
 
