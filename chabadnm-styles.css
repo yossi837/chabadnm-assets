@@ -2832,8 +2832,8 @@ body:not(.homepage) #header_branding .site_title .of-text,
 
 /* Logo wrapper for proper sizing */
 #header_branding .site-logo-wrapper {
-  width: 100px !important;
-  height: 100px !important;
+  width: 110px !important;
+  height: 110px !important;
   border-radius: 50% !important;
   overflow: hidden !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
@@ -2847,21 +2847,23 @@ body:not(.homepage) #header_branding .site_title .of-text,
 
 /* Logo image */
 #header_branding .site-logo-wrapper img {
-  width: 90% !important;
-  height: 90% !important;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: contain !important;
   transition: all 0.3s ease !important;
 }
 
-/* Logo wrapper smaller when scrolled */
+/* Logo wrapper when scrolled - no shadow on white background */
 .scrolled #header_branding .site-logo-wrapper,
 .yellow-header #header_branding .site-logo-wrapper,
 #header.scrolled #header_branding .site-logo-wrapper,
 body:not(.homepage) #header_branding .site-logo-wrapper,
 .header_container.scrolled #header_branding .site-logo-wrapper,
 .white-header #header_branding .site-logo-wrapper {
-  width: 70px !important;
-  height: 70px !important;
+  width: 80px !important;
+  height: 80px !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 #header_branding:hover .site-logo-wrapper img {
