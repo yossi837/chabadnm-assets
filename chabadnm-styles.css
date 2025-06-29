@@ -1220,17 +1220,21 @@ body[data-page-url="https://www.chabadnm.org/tools/feedback.htm"] .contact-butto
 .fab-menu.active .fab-item:nth-child(5) { transition-delay: 0.2s; }
 .fab-menu.active .fab-item:nth-child(6) { transition-delay: 0.25s; }
 
+/* FAB scroll transition */
+.quick-access-fab {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+/* Hide FAB when scrolling down */
+.quick-access-fab.hidden {
+  transform: translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
   .quick-access-fab {
     display: block;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  }
-  
-  /* Hide FAB when scrolling down */
-  .quick-access-fab.hidden {
-    transform: translateY(100px);
-    opacity: 0;
-    pointer-events: none;
   }
 }
 
