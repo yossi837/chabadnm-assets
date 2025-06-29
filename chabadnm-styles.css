@@ -5,6 +5,7 @@
 /* ==== FONTS & BASE STYLES ==== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -2760,64 +2761,57 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 
 /* ==== HEADER BRANDING ==== */
 #header_branding .site_title {
-  color: #dc2626 !important;
-  font-size: 32px !important;
-  font-weight: 700 !important;
+  color: white !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
   text-decoration: none !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  letter-spacing: -0.5px !important;
-  line-height: 1.2 !important;
+  font-family: 'Poppins', sans-serif !important;
+  letter-spacing: -0.3px !important;
+  line-height: 1.3 !important;
   transition: all 0.3s ease !important;
   display: inline-block !important;
   position: relative !important;
+  text-transform: none !important;
+}
+
+/* When header scrolls and gets yellow background */
+.scrolled #header_branding .site_title,
+.yellow-header #header_branding .site_title,
+#header.scrolled #header_branding .site_title {
+  color: #dc2626 !important;
 }
 
 #header_branding .site_title:hover {
-  color: #b91c1c !important;
+  opacity: 0.9;
   transform: translateY(-1px);
-}
-
-/* Add subtle underline on hover */
-#header_branding .site_title::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
-  transition: width 0.3s ease;
-  border-radius: 2px;
-}
-
-#header_branding .site_title:hover::after {
-  width: 100%;
 }
 
 /* Style the subtitle */
 #header_branding .site_subtitle {
   display: block !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
   font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  letter-spacing: 0.5px !important;
+  text-transform: none !important;
+  margin-top: 2px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Subtitle color when scrolled */
+.scrolled #header_branding .site_subtitle,
+.yellow-header #header_branding .site_subtitle,
+#header.scrolled #header_branding .site_subtitle {
   color: #6b7280 !important;
-  letter-spacing: 1px !important;
-  text-transform: uppercase !important;
-  margin-top: 4px !important;
-  opacity: 0.8;
-  transition: opacity 0.3s ease !important;
 }
 
-#header_branding .site_title:hover .site_subtitle {
-  opacity: 1;
-}
-
-/* Logo animation on hover */
+/* Logo animation on hover - subtle */
 #header_branding .site-logo-wrapper img {
   transition: transform 0.3s ease !important;
 }
 
 #header_branding:hover .site-logo-wrapper img {
-  transform: scale(1.05) rotate(-2deg);
+  transform: scale(1.03);
 }
 
 /* Ensure proper alignment */
