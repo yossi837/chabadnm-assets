@@ -664,12 +664,23 @@ td.co_menu_item:hover .co_submenu_container {
   margin-left: -1px; /* Slight overlap to prevent gap */
 }
 
-/* Connect grandchild to parent visually */
+/* Connect grandchild to parent visually - RIGHT SIDE */
 .co_submenu_container .menu_child {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   left: calc(100% - 1px); /* Slight overlap */
   box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Grandchild opening on LEFT SIDE (for right-aligned menus) */
+.co_submenu_container .menu_child.left-side,
+.co_submenu_container.right-aligned .menu_child {
+  left: auto;
+  right: 100%;
+  margin-left: 0;
+  margin-right: -1px;
+  border-radius: 12px 0 0 12px !important; /* Round left side only */
+  box-shadow: -4px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Parent dropdown adjustment when showing grandchildren */
@@ -2255,7 +2266,7 @@ body[data-page-url="https://www.chabadnm.org/tools/feedback.htm"] .contact-butto
 input#Fname::placeholder { color: #999 !important; opacity: 1 !important; }
 input#Lname::placeholder { color: #999 !important; opacity: 1 !important; }
 input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
-/* 2. Grandchild dropdown styling */
+/* 2. Grandchild dropdown styling - RIGHT SIDE (default) */
 .menu_child {
   border-radius: 0 12px 12px 0 !important; /* Only round right side */
   overflow: hidden;
@@ -2264,13 +2275,22 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   margin-left: -2px !important; /* Overlap parent slightly */
 }
 
+/* Grandchild dropdown styling - LEFT SIDE */
+.menu_child.left-side,
+.co_submenu_container.right-aligned .menu_child {
+  border-radius: 12px 0 0 12px !important; /* Only round left side */
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 0 !important;
+  margin-right: -2px !important;
+}
+
 /* When parent has visible grandchild, adjust its corners */
 .co_submenu_container:hover {
   overflow: visible; /* Allow grandchild to show */
 }
 
-/* Style the connection area */
-.co_submenu_container .item:hover .menu_child::before {
+/* Style the connection area - RIGHT SIDE */
+.co_submenu_container .item:hover .menu_child:not(.left-side)::before {
   content: '';
   position: absolute;
   left: -10px;
@@ -2280,4 +2300,198 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   background: white;
   z-index: 1;
 }
+
+/* Style the connection area - LEFT SIDE */
+.co_submenu_container .item:hover .menu_child.left-side::before,
+.co_submenu_container.right-aligned .item:hover .menu_child::before {
+  content: '';
+  position: absolute;
+  right: -10px;
+  left: auto;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: white;
+  z-index: 1;
+}
+/* ==== HEADER SUBSCRIBE DROPDOWN ==== */
+#HeaderSubscribeContainer {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#HeaderSubscribeContainer:hover {
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#SubscribeFormContainer {
+  padding: 24px 20px 20px;
+}
+
+/* Form inputs styling */
+#HeaderSubscribeContainer .co_global_input {
+  width: 100% !important;
+  padding: 12px 16px !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  font-size: 15px !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+#HeaderSubscribeContainer .co_global_input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+#HeaderSubscribeContainer .co_global_input::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+/* First and Last name inputs side by side */
+#HeaderSubscribeContainer #Fname,
+#HeaderSubscribeContainer #Lname {
+  width: calc(50% - 6px) !important;
+}
+
+#HeaderSubscribeContainer #Fname {
+  float: left !important;
+  margin-right: 12px !important;
+}
+
+#HeaderSubscribeContainer #Lname {
+  float: right !important;
+  margin-right: 0 !important;
+}
+
+/* Email input */
+#HeaderSubscribeContainer #SubscribeEmail {
+  clear: both;
+  margin-bottom: 16px !important;
+}
+
+/* Subscribe button */
+#HeaderSubscribeContainer #CoButton_wrapper {
+  margin-bottom: 12px !important;
+}
+
+#HeaderSubscribeContainer #CoButton {
+  width: 100% !important;
+  padding: 14px 24px !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+#HeaderSubscribeContainer #CoButton::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: width 0.6s ease, height 0.6s ease !important;
+}
+
+#HeaderSubscribeContainer #CoButton:hover::before {
+  width: 300px !important;
+  height: 300px !important;
+}
+
+#HeaderSubscribeContainer #CoButton:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;
+}
+
+#HeaderSubscribeContainer #CoButton:active {
+  transform: translateY(0) !important;
+}
+
+/* Subscribe text */
+#HeaderSubscribeContainer .light_grey {
+  color: #64748b !important;
+  font-size: 13px !important;
+  text-align: center !important;
+  padding: 8px 3px 0 3px !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Footer link */
+#HeaderSubscribeContainer .footer_box {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  padding: 14px 20px !important;
+  text-align: center !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  transition: background 0.2s ease !important;
+}
+
+#HeaderSubscribeContainer .footer_box:hover {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%) !important;
+}
+
+#HeaderSubscribeContainer .footer_box a {
+  color: #3b82f6 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  transition: color 0.2s ease !important;
+}
+
+#HeaderSubscribeContainer .footer_box a:hover {
+  color: #2563eb !important;
+}
+
+/* Error message styling */
+#HeaderSubscribeContainer #SubscribeMessage {
+  display: block !important;
+  padding: 10px 14px !important;
+  margin-bottom: 12px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fecaca !important;
+}
+
+/* Success message styling */
+#HeaderSubscribeContainer #SubscribeMessage.success {
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+  border-color: #bbf7d0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  #HeaderSubscribeContainer {
+    width: 100% !important;
+    max-width: 320px !important;
+  }
+  
+  #SubscribeFormContainer {
+    padding: 20px 16px 16px !important;
+  }
+}
+
 /* 3. Frequency toggle - removed custom styling */
