@@ -1223,6 +1223,14 @@ body[data-page-url="https://www.chabadnm.org/tools/feedback.htm"] .contact-butto
 @media (max-width: 768px) {
   .quick-access-fab {
     display: block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+  
+  /* Hide FAB when scrolling down */
+  .quick-access-fab.hidden {
+    transform: translateY(100px);
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -2761,3 +2769,7 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
 }
 
 /* 3. Frequency toggle - removed custom styling */
+/* Note: JavaScript for FAB scroll behavior should be added to HTML:
+   - Hide FAB when scrolling down
+   - Show FAB when scrolling up
+   - Use class 'hidden' to toggle visibility */
