@@ -621,6 +621,11 @@ td.co_menu_item > span.parent > div > a.parent:hover {
   display: none;
 }
 
+/* Style for parent items that have grandchildren */
+.co_submenu_container .item.has-children {
+  position: relative;
+}
+
 /* Show Dropdown on Hover */
 .navbar .parent:hover .co_submenu_container,
 td.co_menu_item:hover .co_submenu_container {
@@ -632,6 +637,13 @@ td.co_menu_item:hover .co_submenu_container {
   padding: 8px 12px;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  position: relative;
+}
+
+/* When hovering an item that shows a grandchild menu */
+.co_submenu_container .co_column .item:hover + .menu_child,
+.co_submenu_container .co_column .item:hover .menu_child {
+  display: block;
 }
 
 /* Hover Effect for Dropdown Items */
@@ -649,6 +661,34 @@ td.co_menu_item:hover .co_submenu_container {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: none;
   overflow: hidden;
+  margin-left: -1px; /* Slight overlap to prevent gap */
+}
+
+/* Connect grandchild to parent visually */
+.co_submenu_container .menu_child {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  left: calc(100% - 1px); /* Slight overlap */
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Parent dropdown adjustment when showing grandchildren */
+.co_submenu_container .co_column:has(.item:hover + .menu_child),
+.co_submenu_container .co_column:has(.item:hover .menu_child) {
+  position: relative;
+}
+
+/* Create seamless connection by extending parent background */
+.co_submenu_container .item:hover ~ .menu_child::before,
+.co_submenu_container .item:hover .menu_child::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: white;
+  z-index: -1;
 }
 
 /* Show grandchild menu on hover */
@@ -2215,11 +2255,29 @@ body[data-page-url="https://www.chabadnm.org/tools/feedback.htm"] .contact-butto
 input#Fname::placeholder { color: #999 !important; opacity: 1 !important; }
 input#Lname::placeholder { color: #999 !important; opacity: 1 !important; }
 input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
-/* 2. Grandchild dropdown rounded corners */
+/* 2. Grandchild dropdown styling */
 .menu_child {
-  border-radius: 12px !important;
+  border-radius: 0 12px 12px 0 !important; /* Only round right side */
   overflow: hidden;
   background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-left: -2px !important; /* Overlap parent slightly */
+}
+
+/* When parent has visible grandchild, adjust its corners */
+.co_submenu_container:hover {
+  overflow: visible; /* Allow grandchild to show */
+}
+
+/* Style the connection area */
+.co_submenu_container .item:hover .menu_child::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: white;
+  z-index: 1;
 }
 /* 3. Frequency toggle - removed custom styling */
