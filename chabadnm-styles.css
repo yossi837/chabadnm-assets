@@ -2758,4 +2758,77 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   }
 }
 
+/* ==== HEADER BRANDING ==== */
+#header_branding .site_title {
+  color: #dc2626 !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  letter-spacing: -0.5px !important;
+  line-height: 1.2 !important;
+  transition: all 0.3s ease !important;
+  display: inline-block !important;
+  position: relative !important;
+}
+
+#header_branding .site_title:hover {
+  color: #b91c1c !important;
+  transform: translateY(-1px);
+}
+
+/* Add subtle underline on hover */
+#header_branding .site_title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+#header_branding .site_title:hover::after {
+  width: 100%;
+}
+
+/* Style the subtitle */
+#header_branding .site_subtitle {
+  display: block !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: #6b7280 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-top: 4px !important;
+  opacity: 0.8;
+  transition: opacity 0.3s ease !important;
+}
+
+#header_branding .site_title:hover .site_subtitle {
+  opacity: 1;
+}
+
+/* Logo animation on hover */
+#header_branding .site-logo-wrapper img {
+  transition: transform 0.3s ease !important;
+}
+
+#header_branding:hover .site-logo-wrapper img {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* Ensure proper alignment */
+#header_branding {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+#header_branding .site-logo-wrapper {
+  flex-shrink: 0;
+}
+
 /* 3. Frequency toggle - removed custom styling */
