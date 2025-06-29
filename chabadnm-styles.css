@@ -2494,4 +2494,270 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   }
 }
 
+/* ==== MODERN DIALOG BOXES ==== */
+.co_dialog {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden !important;
+  animation: dialogSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: none !important;
+}
+
+@keyframes dialogSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Dialog inner structure */
+.co_dialog .b_inside {
+  background: transparent !important;
+  border: none !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Dialog header */
+.co_dialog .b_header.title_bar {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  padding: 0 !important;
+}
+
+.co_dialog .small_header {
+  padding: 18px 24px !important;
+}
+
+.co_dialog .header_text {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  letter-spacing: -0.3px !important;
+  padding-left: 0 !important;
+}
+
+/* Dialog content */
+.co_dialog .co_dialog_content {
+  padding: 24px !important;
+  flex-grow: 1 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+/* Dialog icon */
+.co_dialog .dialog_icon {
+  width: 48px !important;
+  height: 48px !important;
+  flex-shrink: 0 !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  background-image: none !important;
+}
+
+/* Error icon styling */
+.co_dialog .dialog_icon[style*="exclamation"] {
+  background: #fee2e2 !important;
+}
+
+.co_dialog .dialog_icon[style*="exclamation"]::after {
+  content: '!' !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #dc2626 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Success/checkmark icon */
+.co_dialog .dialog_icon[style*="check"] {
+  background: #dcfce7 !important;
+}
+
+.co_dialog .dialog_icon[style*="check"]::after {
+  content: '✓' !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #16a34a !important;
+}
+
+/* Info icon */
+.co_dialog .dialog_icon[style*="info"] {
+  background: #dbeafe !important;
+}
+
+.co_dialog .dialog_icon[style*="info"]::after {
+  content: 'i' !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #2563eb !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Question icon */
+.co_dialog .dialog_icon[style*="question"] {
+  background: #e0e7ff !important;
+}
+
+.co_dialog .dialog_icon[style*="question"]::after {
+  content: '?' !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #6366f1 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Dialog message */
+.co_dialog .dialog_message {
+  flex-grow: 1 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #475569 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+}
+
+/* Dialog footer */
+.co_dialog .b_footer.footer_bar {
+  background: #f8fafc !important;
+  border: none !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  padding: 16px 24px !important;
+  margin-top: auto !important;
+}
+
+.co_dialog .dialog_buttons {
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  padding: 0 !important;
+}
+
+/* Dialog buttons */
+.co_dialog .co_global_button {
+  margin: 0 !important;
+}
+
+.co_dialog .co_global_button button {
+  padding: 10px 24px !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  min-width: 80px !important;
+  letter-spacing: -0.2px !important;
+}
+
+/* Primary button (OK, Yes, Submit, etc.) */
+.co_dialog .co_global_button button[title="OK"],
+.co_dialog .co_global_button button[title="Yes"],
+.co_dialog .co_global_button button[title="Submit"],
+.co_dialog .co_global_button button:only-child {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25) !important;
+}
+
+.co_dialog .co_global_button button[title="OK"]:hover,
+.co_dialog .co_global_button button[title="Yes"]:hover,
+.co_dialog .co_global_button button[title="Submit"]:hover,
+.co_dialog .co_global_button button:only-child:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;
+}
+
+.co_dialog .co_global_button button[title="OK"]:active,
+.co_dialog .co_global_button button[title="Yes"]:active,
+.co_dialog .co_global_button button[title="Submit"]:active,
+.co_dialog .co_global_button button:only-child:active {
+  transform: translateY(0) !important;
+}
+
+/* Secondary buttons (Cancel, No, etc.) */
+.co_dialog .co_global_button button[title="Cancel"],
+.co_dialog .co_global_button button[title="No"],
+.co_dialog .co_global_button button[title="Close"] {
+  background: #ffffff !important;
+  color: #475569 !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+.co_dialog .co_global_button button[title="Cancel"]:hover,
+.co_dialog .co_global_button button[title="No"]:hover,
+.co_dialog .co_global_button button[title="Close"]:hover {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Loading state */
+.co_dialog .loader-big {
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 40px !important;
+}
+
+.co_dialog .loader-big::after {
+  content: '' !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: 3px solid #e2e8f0 !important;
+  border-top-color: #3b82f6 !important;
+  border-radius: 50% !important;
+  animation: dialogSpin 0.8s linear infinite !important;
+}
+
+@keyframes dialogSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Dialog overlay background */
+.ui-widget-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* Remove old styling */
+.co_dialog .rounded_box {
+  border-radius: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .co_dialog {
+    margin: 20px !important;
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+  }
+  
+  .co_dialog .co_dialog_content {
+    padding: 20px !important;
+  }
+  
+  .co_dialog .small_header {
+    padding: 16px 20px !important;
+  }
+}
+
 /* 3. Frequency toggle - removed custom styling */
