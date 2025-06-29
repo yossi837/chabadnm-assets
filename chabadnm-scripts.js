@@ -994,12 +994,23 @@ window.addEventListener('load', function() {
   const searchInput = document.querySelector('.search-input');
   const headerEl = document.querySelector('.modern-mobile-header');
   
-  // Scroll Listener
+  // Scroll Listener with dynamic header styling
   let lastY = 0;
+  let scrollTimer = null;
+  
   window.addEventListener('scroll', () => {
     if (!headerEl) return;
     const currentY = window.pageYOffset;
-    if (currentY > lastY && currentY > 5) {
+    
+    // Add scrolled class for enhanced styling
+    if (currentY > 50) {
+      headerEl.classList.add('scrolled');
+    } else {
+      headerEl.classList.remove('scrolled');
+    }
+    
+    // Hide/show header on scroll direction
+    if (currentY > lastY && currentY > 100) {
       if (!headerEl.classList.contains('hidden')) { 
         headerEl.classList.add('hidden'); 
       }
@@ -1008,6 +1019,7 @@ window.addEventListener('load', function() {
         headerEl.classList.remove('hidden'); 
       }
     }
+    
     lastY = currentY <= 0 ? 0 : currentY;
   }, { passive: true });
   
