@@ -321,7 +321,7 @@ body {
 }
 
 .widget-4.subscribe.custom.v280.feed .widget_header::after {
-  content: '✨ Get the latest updates from Chabad';
+  content: 'Get the latest updates from Chabad';
   display: block;
   text-align: center;
   color: #5f6368;
