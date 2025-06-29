@@ -2758,4 +2758,201 @@ input#Email::placeholder { color: #999 !important; opacity: 1 !important; }
   }
 }
 
+/* ==== SIDEBAR SUBSCRIBE FORM ==== */
+.subscribe_box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.subscribe_box:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.subscribe_box .container {
+  padding: 24px !important;
+}
+
+/* Subscribe header */
+.subscribe_box .small_header {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #1a237e !important;
+  margin-bottom: 20px !important;
+  text-align: center !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* Form inputs */
+.subscribe_box .co_global_input {
+  border: 2px solid #e5e7eb !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  font-size: 15px !important;
+  background: #ffffff !important;
+  transition: all 0.2s ease !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.subscribe_box .co_global_input:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  outline: none !important;
+}
+
+.subscribe_box .co_global_input::placeholder {
+  color: #9ca3af !important;
+  opacity: 1 !important;
+}
+
+/* Name inputs side by side */
+.subscribe_box #Fname {
+  width: calc(50% - 6px) !important;
+  margin-right: 12px !important;
+}
+
+.subscribe_box #Lname {
+  width: calc(50% - 6px) !important;
+  margin-right: 0 !important;
+}
+
+/* Subscribe button */
+.subscribe_box #CoButton {
+  width: 100% !important;
+  padding: 14px 20px !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  letter-spacing: -0.2px !important;
+  margin-top: 4px !important;
+}
+
+.subscribe_box #CoButton span {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.subscribe_box #CoButton::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  transition: width 0.6s ease, height 0.6s ease !important;
+}
+
+.subscribe_box #CoButton:hover::before {
+  width: 300px !important;
+  height: 300px !important;
+}
+
+.subscribe_box #CoButton:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35) !important;
+}
+
+.subscribe_box #CoButton:active {
+  transform: translateY(0) !important;
+}
+
+/* Subscribe text */
+.subscribe_box .light_grey {
+  color: #64748b !important;
+  font-size: 13px !important;
+  text-align: center !important;
+  margin-top: 16px !important;
+  padding: 0 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  line-height: 1.4 !important;
+}
+
+/* More options link */
+.subscribe_box .small_links {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  padding: 16px !important;
+  text-align: center !important;
+  margin: 24px -24px -24px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.subscribe_box .small_links a {
+  color: #3b82f6 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  transition: color 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.subscribe_box .small_links a:hover {
+  color: #2563eb !important;
+}
+
+.subscribe_box .small_links a::after {
+  content: '→' !important;
+  transition: transform 0.2s ease !important;
+}
+
+.subscribe_box .small_links a:hover::after {
+  transform: translateX(3px) !important;
+}
+
+/* Form group spacing */
+.subscribe_box .form_group {
+  margin-top: 12px !important;
+}
+
+/* Hide recaptcha until needed */
+.subscribe_box .js-recaptcha-wrapper:empty {
+  display: none !important;
+}
+
+/* Response container */
+.subscribe_box #56dad309abResponseContainer,
+.subscribe_box [id$="ResponseContainer"] {
+  margin-top: 12px !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  display: none;
+}
+
+.subscribe_box [id$="ResponseContainer"]:not(:empty) {
+  display: block !important;
+  background: #dcfce7 !important;
+  color: #16a34a !important;
+  border: 1px solid #bbf7d0 !important;
+}
+
+.subscribe_box [id$="ResponseContainer"].error:not(:empty) {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fecaca !important;
+}
+
 /* 3. Frequency toggle - removed custom styling */
